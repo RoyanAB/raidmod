@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "cn.royan.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "HopperBlockEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "PlayerEntityRendererMixin",
+    "ProjectileEntityRendererMixin",
+    "WorldRenderMixin"
+  ]
+}
