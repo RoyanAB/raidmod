@@ -18,32 +18,32 @@ import java.util.concurrent.ConcurrentHashMap;
 import static cn.royan.RaidInformation.server;
 
 public class HopperLogger {
-//    private static final List<HopperBlockEntityObject> hopperLoggers = new ArrayList<>();
-//    public static void addServerLogger(BlockPos pos, HopperBlockEntity blockEntity){
-//        HopperBlockEntityObject hopperBlockEntityObject = new HopperBlockEntityObject(pos,blockEntity.transferCooldown);
-//        hopperLoggers.add(hopperBlockEntityObject);
-//    }
-//
-//    public static void sendHopperCoolTime() {
+    private static final List<HopperEntityObject> hopperLoggers = new ArrayList<>();
+    public static void addServerLogger(BlockPos pos, HopperBlockEntity blockEntity){
+        HopperEntityObject hopperEntityObject = new HopperEntityObject(pos,blockEntity.transferCooldown);
+        hopperLoggers.add(hopperEntityObject);
+    }
+
+    public static void sendHopperCoolTime() {
 //        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
 //            NetWorkPacket.serverSend(player,Channels.clear,PacketByteBufs.empty());
 //        }
-//        PacketByteBuf buf = PacketByteBufs.create();
-//        buf.writeCollection(hopperLoggers,(packetByteBuf,HopperBlockEntityObject) -> {
-//            packetByteBuf.writeBlockPos(HopperBlockEntityObject.getPos());
-//            packetByteBuf.writeInt(HopperBlockEntityObject.getCooldown());
-//        });
-//        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-//            NetWorkPacket.serverSend(player,Channels.hopper,buf);
-//        }
-//        hopperLoggers.clear();
-//    }
-
+        PacketByteBuf buf = PacketByteBufs.create();
+        buf.writeCollection(hopperLoggers,(packetByteBuf,HopperEntityObject) -> {
+            packetByteBuf.writeBlockPos(HopperEntityObject.getPos());
+            packetByteBuf.writeInt(HopperEntityObject.getCoolDown());
+        });
+        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+            NetWorkPacket.serverSend(player,Channels.hopper,buf);
+        }
+        hopperLoggers.clear();
+    }
+//
 //    private static final Map<BlockPos,Integer> hopperLoggers = new ConcurrentHashMap<>();
 //    public static void addServerLogger(BlockPos pos, HopperBlockEntity blockEntity){
 //        hopperLoggers.put(pos,blockEntity.transferCooldown);
 //    }
-//
+
 //    public static void sendHopperCoolTime() {
 //        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()){
 //            NetWorkPacket.serverSend(player,Channels.clear,NetWorkPacket.createStringPacket(""));

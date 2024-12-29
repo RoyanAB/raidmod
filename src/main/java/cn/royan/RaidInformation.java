@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cn.royan.render.HopperLogger.sendHopperCoolTime;
+
 
 public class RaidInformation implements ModInitializer {
 	public static final String MOD_ID = "raidinformation";
@@ -28,21 +30,13 @@ public class RaidInformation implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ServerTickEvents.START_SERVER_TICK.register(this::serverTick);
+		ServerTickEvents.START_WORLD_TICK.register(this::serverTick);
 		ServerLifecycleEvents.SERVER_STARTED.register(s -> server = s);
 		LOGGER.info("Hello Fabric world!");
 	}
 
-	private void serverTick(MinecraftServer minecraftServer) {
-//		for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()){
-//            NetWorkPacket.serverSend(player, Channels.clear,NetWorkPacket.createStringPacket(""));
-//        }
+	private void serverTick(ServerWorld serverWorld) {
+		sendHopperCoolTime();
 	}
-
-//	private void serverTick(ServerWorld serverWorld) {
-//		for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()){
-//            NetWorkPacket.serverSend(player, Channels.clear,NetWorkPacket.createStringPacket(""));
-//        }
-//	}
 
 }

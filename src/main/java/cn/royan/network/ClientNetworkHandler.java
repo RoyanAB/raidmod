@@ -16,6 +16,5 @@ public class ClientNetworkHandler {
             HopperRender.getServerLogger(buf);
 //            coolTimeMap.clear();
         }));
-        ClientPlayNetworking.registerGlobalReceiver(Channels.clear,((client, handler, buf, responseSender) -> HopperRender.clear()));
     }
 }

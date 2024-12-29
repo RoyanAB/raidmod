@@ -31,10 +31,10 @@ public abstract class HopperBlockEntityMixin {
     @Shadow private int transferCooldown;
     @Inject(method = "serverTick", at = @At(value = "HEAD"))
     private static void serverTick(World world, BlockPos pos, BlockState state, HopperBlockEntity blockEntity, CallbackInfo ci) {
-        for (ServerPlayerEntity player : getPlayersNearBy(pos,32)){
-            NetWorkPacket.serverSend(player,Channels.hopper,NetWorkPacket.createStringPacket(pos.toShortString() + ", " + blockEntity.transferCooldown));
-        }
-        // HopperLogger.addServerLogger(pos,blockEntity);
+//        for (ServerPlayerEntity player : getPlayersNearBy(pos,32)){
+//            NetWorkPacket.serverSend(player,Channels.hopper,NetWorkPacket.createStringPacket(pos.toShortString() + ", " + blockEntity.transferCooldown));
+//        }
+         HopperLogger.addServerLogger(pos,blockEntity);
 
     }
 }
